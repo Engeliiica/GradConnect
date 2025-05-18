@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "112905784810",
+    "project_id": "GradConnect-e1c3c",
+    "storage_bucket": "GradConnect-e1c3c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112905784810:android:8e6ebac2457c0bfcf4f693",
+        "android_client_info": {
+          "package_name": "com.pbde.gradconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCywz-1CKguyKTFctG4YjlxZ1Zee7P_47E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

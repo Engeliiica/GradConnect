@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_employer_graph"
+    app:startDestination="@id/navigation_employer_jobs">
+
+    <fragment
+        android:id="@+id/navigation_employer_jobs"
+        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerJobsFragment"
+        android:label="Jobs"
+        tools:layout="@layout/fragment_employer_jobs">
+        <action
+            android:id="@+id/action_navigation_employer_jobs_to_navigation_employer_single_job"
+            app:destination="@id/navigation_employer_single_job" />
+        <action
+            android:id="@+id/action_navigation_employer_jobs_to_navigation_employer_create_edit_job"
+            app:destination="@id/navigation_employer_create_edit_job" />
+    </fragment>
+
+    <!-- Single Job Detail -->
+    <fragment
+        android:id="@+id/navigation_employer_single_job"
+        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerSingleJobFragment"
+        android:label="Job Details"
+        tools:layout="@layout/fragment_employer_single_job">
+        <argument
+            android:name="jobId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_employer_single_job_to_navigation_employer_single_application"
+            app:destination="@id/navigation_employer_single_application" />
+        <action
+            android:id="@+id/action_navigation_employer_single_job_to_navigation_employer_create_edit_job"
+            app:destination="@id/navigation_employer_create_edit_job" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_employer_applications"
+        android:name="com.pbde.gradconnect.ui.employer.applications.EmployerApplicationsFragment"
+        android:label="Applications"
+        tools:layout="@layout/fragment_employer_applications">
+        <action
+            android:id="@+id/action_navigation_employer_applications_to_navigation_employer_single_application"
+            app:destination="@id/navigation_employer_single_application" />
+    </fragment>
+
+    <!-- Single Application Detail -->
+    <fragment
+        android:id="@+id/navigation_employer_single_application"
+        android:name="com.pbde.gradconnect.ui.employer.applications.EmployerSingleApplicationFragment"
+        android:label="Application Details"
+        tools:layout="@layout/fragment_employer_single_application">
+        <argument
+            android:name="applicationId"
+            app:argType="string" />
+        <!-- Removed chat navigation action since we're using an Activity -->
+    </fragment>
+
+    <!-- Create/Edit Job Screen -->
+    <fragment
+        android:id="@+id/navigation_employer_create_edit_job"
+        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerCreateEditJobFragment"
+        android:label="Create or Edit Job"
+        tools:layout="@layout/fragment_employer_create_edit_job">
+        <argument
+            android:name="jobId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_navigation_employer_create_edit_job_to_navigation_employer_jobs"
+            app:destination="@id/navigation_employer_jobs" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_employer_profile"
+        android:name="com.pbde.gradconnect.ui.employer.profile.EmployerProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_employer_profile" />
+        
+    <!-- Employer Chats -->
+    <fragment
+        android:id="@+id/navigation_employer_chats"
+        android:name="com.pbde.gradconnect.ui.employer.chats.EmployerChatsFragment"
+        android:label="Chats"
+        tools:layout="@layout/fragment_employer_chats" />
+</navigation>
