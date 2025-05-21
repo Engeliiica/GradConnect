@@ -134,6 +134,11 @@ public class EmployerProfileFragment extends Fragment {
             return;
         }
 
+        // Update employer's full name
+        if (employer != null) {
+            employer.setFullName(fullName);
+        }
+
         // Create updated profile
         EmployerProfile updatedProfile = new EmployerProfile(companyName, companyDescription, website);
         

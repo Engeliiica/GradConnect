@@ -17,6 +17,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.button.MaterialButton;
 import com.pbde.gradconnect.data.models.Job;
+import com.google.android.material.card.MaterialCardView;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -31,7 +32,7 @@ public class EmployerSingleJobFragment extends Fragment {
     
     private ProgressBar loadingProgress;
     private TextView errorText;
-    private View contentContainer;
+    private MaterialCardView contentContainer;
     
     private TextView jobTitle, companyName, createdDate, jobDescription, salary;
     private Chip jobType, workMode, level;
@@ -65,7 +66,7 @@ public class EmployerSingleJobFragment extends Fragment {
         // Initialize views
         loadingProgress = view.findViewById(R.id.loading_progress);
         errorText = view.findViewById(R.id.error_text);
-//        contentContainer = view.findViewById(R.id.content_container);
+        contentContainer = view.findViewById(R.id.card_view);
         
         jobTitle = view.findViewById(R.id.job_title);
         companyName = view.findViewById(R.id.company_name);
@@ -172,6 +173,7 @@ public class EmployerSingleJobFragment extends Fragment {
     }
 
     private void setupList(LinearLayout container, java.util.List<String> items) {
+        container.removeAllViews(); // Clear existing views
         for (String item : items) {
             TextView textView = new TextView(requireContext());
             textView.setText(String.format("• %s", item));

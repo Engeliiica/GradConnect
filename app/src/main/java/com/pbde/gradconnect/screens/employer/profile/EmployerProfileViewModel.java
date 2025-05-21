@@ -5,14 +5,19 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.pbde.gradconnect.data.models.Employer;
 import com.pbde.gradconnect.data.models.EmployerProfile;
 import com.pbde.gradconnect.data.repository.EmployerProfileRepository;
 import com.pbde.gradconnect.data.repository.UserRepository;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EmployerProfileViewModel extends ViewModel {
     private final EmployerProfileRepository profileRepository = new EmployerProfileRepository();
     private final UserRepository userRepository = new UserRepository();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<EmployerProfile> profileData = new MutableLiveData<>();
     private final MutableLiveData<String> error = new MutableLiveData<>();
@@ -81,7 +86,15 @@ public class EmployerProfileViewModel extends ViewModel {
         isLoading.setValue(true);
         error.setValue(null);
         
-        profileRepository.saveEmployerProfile(employerData.getValue().getId(), updatedProfile)
+        // Create a map of updates to save both profile and full name
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("profile", updatedProfile);
+        updates.put("fullName", employerData.getValue().getFullName());
+        
+        // Update both profile and full name in Firestore
+        db.collection("users")
+            .document(employerData.getValue().getId())
+            .update(updates)
             .addOnSuccessListener(aVoid -> {
                 Employer employer = employerData.getValue();
                 employer.setProfile(updatedProfile);
