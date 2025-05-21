@@ -64,6 +64,8 @@ public class EmployerCreateEditJobFragment extends Fragment {
                 jobTypes
         );
         jobTypeInput.setAdapter(jobTypeAdapter);
+        jobTypeInput.setThreshold(1); // Show dropdown after typing 1 character
+        jobTypeInput.setOnClickListener(v -> jobTypeInput.showDropDown()); // Show dropdown on click
 
         // Setup work mode dropdown
         AutoCompleteTextView workModeInput = view.findViewById(R.id.workModeInput);
@@ -74,6 +76,8 @@ public class EmployerCreateEditJobFragment extends Fragment {
                 workModes
         );
         workModeInput.setAdapter(workModeAdapter);
+        workModeInput.setThreshold(1); // Show dropdown after typing 1 character
+        workModeInput.setOnClickListener(v -> workModeInput.showDropDown()); // Show dropdown on click
 
         // Observe job data for editing
         viewModel.getJobData().observe(getViewLifecycleOwner(), job -> {
