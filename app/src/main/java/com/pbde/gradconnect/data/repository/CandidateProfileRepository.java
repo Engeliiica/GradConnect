@@ -3,9 +3,9 @@ package com.pbde.gradconnect.data.repository;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pbde.gradconnect.data.models.CandidateEducation;
-import com.pbde.gradconnect.data.models.CandidateExperience;
-import com.pbde.gradconnect.data.models.CandidateProfile;
+import com.pbde.gradconnect.data.models.Education;
+import com.pbde.gradconnect.data.models.Experience;
+import com.pbde.gradconnect.data.models.GraduateProfile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class CandidateProfileRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String USERS_COLLECTION = "users";
 
-    public Task<CandidateProfile> getCandidateProfile(String userId) {
+    public Task<GraduateProfile> getCandidateProfile(String userId) {
         return db.collection(USERS_COLLECTION)
                 .document(userId)
                 .get()
@@ -37,10 +37,10 @@ public class CandidateProfileRepository {
                                 skills = (List<String>) profileData.get("skills");
                             }
                             
-                            List<CandidateEducation> education = parseEducation(profileData);
-                            List<CandidateExperience> experience = parseExperience(profileData);
+                            List<Education> education = parseEducation(profileData);
+                            List<Experience> experience = parseExperience(profileData);
                             
-                            return new CandidateProfile(
+                            return new GraduateProfile(
                                 phone != null ? phone : "",
                                 location != null ? location : "",
                                 education,
@@ -50,12 +50,12 @@ public class CandidateProfileRepository {
                         }
                     }
                     // Return empty profile if nothing found
-                    return new CandidateProfile("", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+                    return new GraduateProfile("", "", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
                 });
     }
     
-    private List<CandidateEducation> parseEducation(Map<String, Object> profileData) {
-        List<CandidateEducation> educationList = new ArrayList<>();
+    private List<Education> parseEducation(Map<String, Object> profileData) {
+        List<Education> educationList = new ArrayList<>();
         if (profileData.get("education") instanceof List) {
             List<Map<String, Object>> educationData = (List<Map<String, Object>>) profileData.get("education");
             for (Map<String, Object> edu : educationData) {
@@ -68,7 +68,7 @@ public class CandidateProfileRepository {
                 Date endDate = parseDate((String) edu.get("endDate"));
                 
                 if (degree != null && institution != null && startDate != null) {
-                    educationList.add(new CandidateEducation(
+                    educationList.add(new Education(
                         degree,
                         institution,
                         startDate,
@@ -81,8 +81,8 @@ public class CandidateProfileRepository {
         return educationList;
     }
     
-    private List<CandidateExperience> parseExperience(Map<String, Object> profileData) {
-        List<CandidateExperience> experienceList = new ArrayList<>();
+    private List<Experience> parseExperience(Map<String, Object> profileData) {
+        List<Experience> experienceList = new ArrayList<>();
         if (profileData.get("experience") instanceof List) {
             List<Map<String, Object>> experienceData = (List<Map<String, Object>>) profileData.get("experience");
             for (Map<String, Object> exp : experienceData) {
@@ -95,7 +95,7 @@ public class CandidateProfileRepository {
                 Date endDate = parseDate((String) exp.get("endDate"));
                 
                 if (title != null && company != null && startDate != null) {
-                    experienceList.add(new CandidateExperience(
+                    experienceList.add(new Experience(
                         title,
                         company,
                         startDate,

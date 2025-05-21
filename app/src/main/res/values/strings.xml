@@ -2,12 +2,12 @@
     <string name="app_name">GradConnect</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_candidate_main">CandidateMainActivity</string>
+    <string name="title_activity_graduate_main">CandidateMainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_employer_main">EmployerMainActivity</string>
-    <string name="title_activity_candidate_chat">Chat</string>
+    <string name="title_activity_graduate_chat">Chat</string>
     <string name="title_activity_employer_chat">Chat</string>
 
     <!-- Bottom Navigation Menu Items -->
@@ -18,9 +18,9 @@
     <string name="menu_profile">Profile</string>
 
     <string-array name="work_mode_options">
-        <item>All</item>
+        <item>All Locations</item>
         <item>Remote</item>
-        <item>On-site</item>
+        <item>Office</item>
         <item>Hybrid</item>
     </string-array>
 
@@ -30,4 +30,10 @@
         <item>Part-time</item>
         <item>Contract</item>
     </string-array>
+
+
+    <string name="title_text">GradConnect</string>
+    <string name="carousel_title">Welcome to GradConnect</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
 </resources>

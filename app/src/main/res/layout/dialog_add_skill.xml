@@ -8,7 +8,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="#F0FAFF"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="@android:color/transparent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/skill_input"
@@ -17,4 +24,5 @@
             android:hint="Skill Name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
+
 </LinearLayout>

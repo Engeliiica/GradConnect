@@ -13,21 +13,21 @@
         android:theme="@style/Theme.GradConnect"
         tools:targetApi="31">
         <activity
-            android:name=".ui.employer.chats.EmployerChatActivity"
+            android:name=".screens.employer.chats.EmployerChatActivity"
             android:exported="false"
             android:label="@string/title_activity_employer_chat" />
         <activity
-            android:name=".ui.candidate.chats.CandidateChatActivity"
+            android:name=".screens.graduate.chats.GraduateChatActivity"
             android:exported="false"
-            android:label="@string/title_activity_candidate_chat" />
+            android:label="@string/title_activity_graduate_chat" />
         <activity
-            android:name=".ui.employer.EmployerMainActivity"
+            android:name=".screens.employer.EmployerMainActivity"
             android:exported="false"
             android:label="@string/title_activity_employer_main" />
         <activity
-            android:name=".ui.candidate.CandidateMainActivity"
+            android:name=".screens.graduate.GraduateMainActivity"
             android:exported="false"
-            android:label="@string/title_activity_candidate_main" />
+            android:label="@string/title_activity_graduate_main" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

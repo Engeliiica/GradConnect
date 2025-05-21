@@ -20,7 +20,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/primary"
+            android:textColor="#B2DFDB"
             android:text="U" />
 
         <LinearLayout

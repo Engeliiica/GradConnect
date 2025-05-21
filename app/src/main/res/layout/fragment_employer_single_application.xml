@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.employer.applications.EmployerSingleApplicationFragment">
+    android:background="#E6F9F6"
+    tools:context=".screens.employer.applications.EmployerSingleApplicationFragment">
 
     <ScrollView
         android:id="@+id/contentContainer"
@@ -17,11 +18,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Candidate Information Card -->
+            <!-- Graduate Information Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:backgroundTint="#FFFFFF"
                 app:cardElevation="2dp"
                 app:cardCornerRadius="8dp">
 
@@ -76,6 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:backgroundTint="#FFFFFF"
                 app:cardElevation="2dp"
                 app:cardCornerRadius="8dp">
 
@@ -171,27 +174,43 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/messageCandidateButton"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Message Candidate"
-                            android:layout_marginBottom="8dp"/>
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="8dp"
+                            android:weightSum="2">
 
-                        <Button
-                            android:id="@+id/interviewButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Schedule Interview"
-                            android:layout_marginBottom="8dp"/>
+                            <Button
+                                android:id="@+id/messageCandidateButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:backgroundTint="#4DB6AC"
+                                android:text="Message Candidate"
+                                android:layout_marginEnd="4dp"/>
+
+                            <Button
+                                android:id="@+id/interviewButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:backgroundTint="#4DB6AC"
+                                android:text="Schedule   Interview"
+                                android:layout_marginStart="4dp"/>
+                        </LinearLayout>
 
                         <Button
                             android:id="@+id/rejectButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="#FFFFFF"
+                            android:backgroundTint="#FF6666"
                             android:text="Reject Application"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
                     </LinearLayout>
+
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

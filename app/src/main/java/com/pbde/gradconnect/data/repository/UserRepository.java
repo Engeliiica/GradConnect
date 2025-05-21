@@ -4,25 +4,20 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.pbde.gradconnect.data.models.CandidateEducation;
-import com.pbde.gradconnect.data.models.CandidateExperience;
-import com.pbde.gradconnect.data.models.CandidateProfile;
+import com.pbde.gradconnect.data.models.Education;
+import com.pbde.gradconnect.data.models.Experience;
+import com.pbde.gradconnect.data.models.GraduateProfile;
 import com.pbde.gradconnect.data.models.EmployerProfile;
+import com.pbde.gradconnect.data.models.Graduate;
 import com.pbde.gradconnect.data.models.User;
-import com.pbde.gradconnect.data.models.Candidate;
 import com.pbde.gradconnect.data.models.Employer;
 import com.pbde.gradconnect.data.models.enums.UserRole;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.firebase.firestore.QuerySnapshot;
-import android.util.Log;
+
 import com.pbde.gradconnect.utils.DateUtils;
 
 public class UserRepository {
@@ -115,17 +110,17 @@ public class UserRepository {
         Date updatedAt = parseDate(updatedAtString);
 
         if (role == UserRole.CANDIDATE) {
-            CandidateProfile candidateProfile = null;
+            GraduateProfile graduateProfile = null;
             if (profileMap != null) {
-                List<CandidateEducation> education = parseEducation(profileMap);
-                List<CandidateExperience> experience = parseExperience(profileMap);
+                List<Education> education = parseEducation(profileMap);
+                List<Experience> experience = parseExperience(profileMap);
                 List<String> skills = profileMap.get("skills") instanceof List ? 
                     (List<String>) profileMap.get("skills") : 
                     new ArrayList<>();
                 String phone = (String) profileMap.get("phone");
                 String location = (String) profileMap.get("location");
 
-                candidateProfile = new CandidateProfile(
+                graduateProfile = new GraduateProfile(
                     phone != null ? phone : "",
                     location != null ? location : "",
                     education,
@@ -133,7 +128,7 @@ public class UserRepository {
                     skills
                 );
             }
-            return new Candidate(id, createdAt, updatedAt, uid, fullName, email, candidateProfile);
+            return new Graduate(id, createdAt, updatedAt, uid, fullName, email, graduateProfile);
         } else if (role == UserRole.EMPLOYER) {
             EmployerProfile employerProfile = null;
             if (profileMap != null) {
@@ -155,8 +150,8 @@ public class UserRepository {
         return new User(id, createdAt, updatedAt, uid, fullName, email, role, null, null);
     }
 
-    private List<CandidateEducation> parseEducation(Map<String, Object> profileMap) {
-        List<CandidateEducation> educationList = new ArrayList<>();
+    private List<Education> parseEducation(Map<String, Object> profileMap) {
+        List<Education> educationList = new ArrayList<>();
         if (profileMap.get("education") instanceof List) {
             List<Map<String, Object>> educationData = (List<Map<String, Object>>) profileMap.get("education");
             for (Map<String, Object> edu : educationData) {
@@ -167,7 +162,7 @@ public class UserRepository {
                 Date endDate = parseDate((String) edu.get("endDate"));
                 
                 if (degree != null && institution != null && startDate != null) {
-                    educationList.add(new CandidateEducation(
+                    educationList.add(new Education(
                         degree,
                         institution,
                         startDate,
@@ -180,8 +175,8 @@ public class UserRepository {
         return educationList;
     }
 
-    private List<CandidateExperience> parseExperience(Map<String, Object> profileMap) {
-        List<CandidateExperience> experienceList = new ArrayList<>();
+    private List<Experience> parseExperience(Map<String, Object> profileMap) {
+        List<Experience> experienceList = new ArrayList<>();
         if (profileMap.get("experience") instanceof List) {
             List<Map<String, Object>> experienceData = (List<Map<String, Object>>) profileMap.get("experience");
             for (Map<String, Object> exp : experienceData) {
@@ -192,7 +187,7 @@ public class UserRepository {
                 Date endDate = parseDate((String) exp.get("endDate"));
                 
                 if (title != null && company != null && startDate != null) {
-                    experienceList.add(new CandidateExperience(
+                    experienceList.add(new Experience(
                         title,
                         company,
                         startDate,
@@ -219,20 +214,20 @@ public class UserRepository {
                 .update(updates);
     }
 
-    public Task<List<Candidate>> getCandidates() {
+    public Task<List<Graduate>> getCandidates() {
         return db.collection(USERS_COLLECTION)
                 .whereEqualTo("role", UserRole.CANDIDATE.getRoleString())
                 .get()
                 .continueWith(task -> {
                     if (task.isSuccessful()) {
-                        List<Candidate> candidates = new ArrayList<>();
+                        List<Graduate> graduates = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult()) {
                             User user = documentToUser(document);
-                            if (user instanceof Candidate) {
-                                candidates.add((Candidate) user);
+                            if (user instanceof Graduate) {
+                                graduates.add((Graduate) user);
                             }
                         }
-                        return candidates;
+                        return graduates;
                     }
                     return new ArrayList<>();
                 });
@@ -257,36 +252,36 @@ public class UserRepository {
                 });
     }
 
-    public Task<Candidate> getCandidateById(String candidateId) {
+    public Task<Graduate> getCandidateById(String candidateId) {
         return db.collection(USERS_COLLECTION)
                 .document(candidateId)
                 .get()
                 .continueWith(task -> {
                     if (task.isSuccessful() && task.getResult().exists()) {
                         User user = documentToUser(task.getResult());
-                        if (user instanceof Candidate) {
-                            return (Candidate) user;
+                        if (user instanceof Graduate) {
+                            return (Graduate) user;
                         }
                     }
                     return null;
                 });
     }
 
-    public Task<List<Candidate>> getManyCandidatesByIds(List<String> candidateIds) {
+    public Task<List<Graduate>> getManyCandidatesByIds(List<String> candidateIds) {
         return db.collection(USERS_COLLECTION)
                 .whereEqualTo("role", UserRole.CANDIDATE.getRoleString())
                 .whereIn("id", candidateIds)
                 .get()
                 .continueWith(task -> {
                     if (task.isSuccessful()) {
-                        List<Candidate> candidates = new ArrayList<>();
+                        List<Graduate> graduates = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult().getDocuments()) {
                             User user = documentToUser(document);
-                            if (user instanceof Candidate) {
-                                candidates.add((Candidate) user);
+                            if (user instanceof Graduate) {
+                                graduates.add((Graduate) user);
                             }
                         }
-                        return candidates;
+                        return graduates;
                     }
                     return new ArrayList<>();
                 });
@@ -312,7 +307,7 @@ public class UserRepository {
                 });
     }
 
-    public Task<List<Candidate>> searchCandidatesByFullname(String fullName) {
+    public Task<List<Graduate>> searchCandidatesByFullname(String fullName) {
         return db.collection(USERS_COLLECTION)
                 .whereEqualTo("role", UserRole.CANDIDATE.getRoleString())
                 .whereEqualTo("fullName", fullName)
@@ -320,36 +315,36 @@ public class UserRepository {
                 .get()
                 .continueWith(task -> {
                     if (task.isSuccessful()) {
-                        List<Candidate> candidates = new ArrayList<>();
+                        List<Graduate> graduates = new ArrayList<>();
                         for (DocumentSnapshot document : task.getResult().getDocuments()) {
                             User user = documentToUser(document);
-                            if (user instanceof Candidate) {
-                                candidates.add((Candidate) user);
+                            if (user instanceof Graduate) {
+                                graduates.add((Graduate) user);
                             }
                         }
-                        return candidates;
+                        return graduates;
                     }
                     return new ArrayList<>();
                 });
     }
 
-    public Task<Candidate> setCandidateProfile(Candidate candidate) {
-        if (candidate.getRole() != UserRole.CANDIDATE) {
-            throw new IllegalArgumentException("User is not a candidate");
+    public Task<Graduate> setCandidateProfile(Graduate graduates) {
+        if (graduates.getRole() != UserRole.CANDIDATE) {
+            throw new IllegalArgumentException("User is not a graduates");
         }
 
         Map<String, Object> updates = new HashMap<>();
-        updates.put("profile", candidate.getProfile().toMap());
-        updates.put("fullName", candidate.getFullName());
+        updates.put("profile", graduates.getProfile().toMap());
+        updates.put("fullName", graduates.getFullName());
         updates.put("updatedAt", DateUtils.formatToIso8601(new Date()));
 
         return db.collection(USERS_COLLECTION)
-                .document(candidate.getId())
+                .document(graduates.getId())
                 .update(updates)
                 .continueWith(task -> {
                     if (task.isSuccessful()) {
-                        candidate.setUpdatedAt(new Date());
-                        return candidate;
+                        graduates.setUpdatedAt(new Date());
+                        return graduates;
                     }
                     throw task.getException();
                 });

@@ -89,4 +89,9 @@
     <color name="colorOnAccepted">#1B5E20</color>
     <color name="colorRejected">#FFCDD2</color>
     <color name="colorOnRejected">#B71C1C</color>
+    <color name="colorPrimary">#B2DFDB</color>       <!-- Light Teal -->
+    <color name="colorPrimaryVariant">#80CBC4</color> <!-- Even lighter -->
+    <color name="colorAccent">#4DD0E1</color>        <!-- Soft blue accent -->
+
+
 </resources>

@@ -1,150 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="#E6F9F6"
+    android:padding="24dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:text="GradConnect"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#0F5962"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            >
+    <!-- Enlarged Link Emoji -->
+    <TextView
+        android:id="@+id/logoEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🔗"
+        android:textSize="80sp"
+        android:textColor="#1FAB89"
+        app:layout_constraintTop_toBottomOf="@id/appName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/black" />
+    <!-- Welcome Title -->
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to GradConnect"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#0F5962"
+        app:layout_constraintTop_toBottomOf="@id/logoEmoji"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="72dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:background="#80000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:gravity="center"
-                >
+    <!-- Slogan -->
+    <TextView
+        android:id="@+id/appSlogan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Connecting tomorrow's talent with today's opportunities"
+        android:textSize="16sp"
+        android:textColor="#4DD0E1"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/welcomeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 
-                <TextView
-                    android:id="@+id/carousel_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"/>
+    <!-- Sign Up Button -->
 
-                <TextView
-                    android:id="@+id/carousel_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"/>
+    <!-- Sign In Button -->
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4DB6AC"
+        android:paddingVertical="14dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginHorizontal="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appSlogan" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    >
-
-                    <Button
-                        android:id="@+id/getStartedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Get Started"
-                        android:layout_marginEnd="8dp"/>
-
-                    <Button
-                        android:id="@+id/signInButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sign In"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:textColor="@android:color/white"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/carouselIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Features Section -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Why Choose GradConnect?"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <LinearLayout
-            android:id="@+id/featuresContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"/>
-
-        <!-- Call to Action Section -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardBackgroundColor="?attr/colorPrimary"
-            app:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ready to Start Your Career Journey?"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Join GradConnect today and connect with amazing opportunities"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"/>
-
-                <Button
-                    android:id="@+id/ctaButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:text="Get Started Now"
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                    android:backgroundTint="@android:color/white"
-                    android:textColor="?attr/colorPrimary"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-
-</ScrollView>
+    <Button
+        android:id="@+id/signInButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:paddingVertical="14dp"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textColor="#4DB6AC"
+        app:cornerRadius="50dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginHorizontal="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

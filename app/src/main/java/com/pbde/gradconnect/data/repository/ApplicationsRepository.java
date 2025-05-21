@@ -7,7 +7,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pbde.gradconnect.data.models.Application;
 import com.pbde.gradconnect.data.models.ApplicationInterview;
-import com.pbde.gradconnect.data.models.Candidate;
+import com.pbde.gradconnect.data.models.Graduate;
 import com.pbde.gradconnect.data.models.User;
 import com.pbde.gradconnect.data.models.enums.ApplicationStatus;
 import com.pbde.gradconnect.util.AuthManager;
@@ -123,8 +123,8 @@ public class ApplicationsRepository {
         return applicationsLiveData;
     }
 
-    public LiveData<List<Candidate>> getCandidatesForJob(String jobId, UserRepository userRepository) {
-        MutableLiveData<List<Candidate>> candidatesLiveData = new MutableLiveData<>();
+    public LiveData<List<Graduate>> getCandidatesForJob(String jobId, UserRepository userRepository) {
+        MutableLiveData<List<Graduate>> candidatesLiveData = new MutableLiveData<>();
 
         db.collection(APPLICATIONS_COLLECTION)
             .whereEqualTo("jobId", jobId)
@@ -143,11 +143,11 @@ public class ApplicationsRepository {
 
                 userRepository.getUsersByIds(candidateIds)
                     .addOnSuccessListener(users -> {
-                        List<Candidate> candidates = new ArrayList<>();
+                        List<Graduate> graduates = new ArrayList<>();
                         for (User user : users) {
-                            candidates.add((Candidate) user);
+                            graduates.add((Graduate) user);
                         }
-                        candidatesLiveData.setValue(candidates);
+                        candidatesLiveData.setValue(graduates);
                     })
                     .addOnFailureListener(e -> candidatesLiveData.setValue(new ArrayList<>()));
             })

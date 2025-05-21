@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         int actionId;
         if (role == UserRole.CANDIDATE) {
             actionId = currentDestId == R.id.navigation_home ?
-                R.id.action_navigation_home_to_activity_candidate_main :
+                R.id.action_navigation_home_to_activity_graduate_main :
                 currentDestId == R.id.navigation_login ?
-                    R.id.action_navigation_login_to_activity_candidate_main :
-                    R.id.action_navigation_register_to_activity_candidate_main;
+                    R.id.action_navigation_login_to_activity_graduate_main :
+                    R.id.action_navigation_register_to_activity_graduate_main;
         } else {
             actionId = currentDestId == R.id.navigation_home ?
                 R.id.action_navigation_home_to_activity_employer_main :
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     private void navigateToUserDashboard(UserRole role) {
         try {
             if (role == UserRole.CANDIDATE) {
-                navController.navigate(R.id.action_navigation_home_to_activity_candidate_main);
+                navController.navigate(R.id.action_navigation_home_to_activity_graduate_main);
             } else {
                 navController.navigate(R.id.action_navigation_home_to_activity_employer_main);
             }

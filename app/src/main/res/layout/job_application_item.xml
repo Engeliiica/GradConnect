@@ -38,6 +38,7 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:paddingTop="4dp"
+                android:visibility="gone"
                 android:paddingBottom="4dp" />
         </LinearLayout>
 

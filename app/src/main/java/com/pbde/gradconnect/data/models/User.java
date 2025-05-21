@@ -17,21 +17,21 @@ public class User extends BaseModel {
     private UserRole role;
 
     @Nullable
-    private CandidateProfile candidateProfile;
+    private GraduateProfile graduateProfile;
 
     @Nullable
     private EmployerProfile employerProfile;
 
     public User(@NonNull String id, @NonNull Date createdAt, @NonNull Date updatedAt,
                 @NonNull String uid, @NonNull String fullName, @NonNull String email,
-                @NonNull UserRole role, @Nullable CandidateProfile candidateProfile,
+                @NonNull UserRole role, @Nullable GraduateProfile graduateProfile,
                 @Nullable EmployerProfile employerProfile) {
         super(id, createdAt, updatedAt);
         this.uid = uid;
         this.fullName = fullName;
         this.email = email;
         this.role = role;
-        this.candidateProfile = candidateProfile;
+        this.graduateProfile = graduateProfile;
         this.employerProfile = employerProfile;
     }
 

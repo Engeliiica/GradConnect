@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="260dp"
                 android:textSize="16sp"
-                android:text="Loading..."/>
+                android:text="Loading"/>
 
             <TextView
                 android:id="@+id/timeText"

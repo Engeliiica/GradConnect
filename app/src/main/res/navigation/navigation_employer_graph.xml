@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_employer_jobs"
-        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerJobsFragment"
+        android:name="com.pbde.gradconnect.screens.employer.jobs.EmployerJobsFragment"
         android:label="Jobs"
         tools:layout="@layout/fragment_employer_jobs">
         <action
@@ -21,7 +21,7 @@
     <!-- Single Job Detail -->
     <fragment
         android:id="@+id/navigation_employer_single_job"
-        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerSingleJobFragment"
+        android:name="com.pbde.gradconnect.screens.employer.jobs.EmployerSingleJobFragment"
         android:label="Job Details"
         tools:layout="@layout/fragment_employer_single_job">
         <argument
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/navigation_employer_applications"
-        android:name="com.pbde.gradconnect.ui.employer.applications.EmployerApplicationsFragment"
+        android:name="com.pbde.gradconnect.screens.employer.applications.EmployerApplicationsFragment"
         android:label="Applications"
         tools:layout="@layout/fragment_employer_applications">
         <action
@@ -48,7 +48,7 @@
     <!-- Single Application Detail -->
     <fragment
         android:id="@+id/navigation_employer_single_application"
-        android:name="com.pbde.gradconnect.ui.employer.applications.EmployerSingleApplicationFragment"
+        android:name="com.pbde.gradconnect.screens.employer.applications.EmployerSingleApplicationFragment"
         android:label="Application Details"
         tools:layout="@layout/fragment_employer_single_application">
         <argument
@@ -60,8 +60,8 @@
     <!-- Create/Edit Job Screen -->
     <fragment
         android:id="@+id/navigation_employer_create_edit_job"
-        android:name="com.pbde.gradconnect.ui.employer.jobs.EmployerCreateEditJobFragment"
-        android:label="Create or Edit Job"
+        android:name="com.pbde.gradconnect.screens.employer.jobs.EmployerCreateEditJobFragment"
+        android:label="Create Job"
         tools:layout="@layout/fragment_employer_create_edit_job">
         <argument
             android:name="jobId"
@@ -75,14 +75,14 @@
 
     <fragment
         android:id="@+id/navigation_employer_profile"
-        android:name="com.pbde.gradconnect.ui.employer.profile.EmployerProfileFragment"
+        android:name="com.pbde.gradconnect.screens.employer.profile.EmployerProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_employer_profile" />
         
     <!-- Employer Chats -->
     <fragment
         android:id="@+id/navigation_employer_chats"
-        android:name="com.pbde.gradconnect.ui.employer.chats.EmployerChatsFragment"
+        android:name="com.pbde.gradconnect.screens.employer.chats.EmployerChatsFragment"
         android:label="Chats"
         tools:layout="@layout/fragment_employer_chats" />
 </navigation>

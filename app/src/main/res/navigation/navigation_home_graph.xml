@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.pbde.gradconnect.ui.home.HomeFragment"
+        android:name="com.pbde.gradconnect.screens.home.HomeFragment"
         android:label="Home" 
         tools:layout="@layout/fragment_home">
         <action
@@ -17,8 +17,8 @@
             android:id="@+id/action_navigation_home_to_navigation_register"
             app:destination="@id/navigation_register" />
         <action
-            android:id="@+id/action_navigation_home_to_activity_candidate_main"
-            app:destination="@id/activity_candidate_main"
+            android:id="@+id/action_navigation_home_to_activity_graduate_main"
+            app:destination="@id/activity_graduate_main"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />
         <action
@@ -30,12 +30,12 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.pbde.gradconnect.ui.auth.login.AuthLoginFragment"
+        android:name="com.pbde.gradconnect.screens.auth.login.AuthLoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_auth_login">
         <action
-            android:id="@+id/action_navigation_login_to_activity_candidate_main"
-            app:destination="@id/activity_candidate_main" />
+            android:id="@+id/action_navigation_login_to_activity_graduate_main"
+            app:destination="@id/activity_graduate_main" />
         <action
             android:id="@+id/action_navigation_login_to_activity_employer_main"
             app:destination="@id/activity_employer_main" />
@@ -49,12 +49,12 @@
 
     <fragment
         android:id="@+id/navigation_register"
-        android:name="com.pbde.gradconnect.ui.auth.register.AuthRegisterFragment"
+        android:name="com.pbde.gradconnect.screens.auth.register.AuthRegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_auth_register">
         <action
-            android:id="@+id/action_navigation_register_to_activity_candidate_main"
-            app:destination="@id/activity_candidate_main" />
+            android:id="@+id/action_navigation_register_to_activity_graduate_main"
+            app:destination="@id/activity_graduate_main" />
         <action
             android:id="@+id/action_navigation_register_to_activity_employer_main"
             app:destination="@id/activity_employer_main" />
@@ -67,14 +67,14 @@
     </fragment>
 
     <activity
-        android:id="@+id/activity_candidate_main"
-        android:name="com.pbde.gradconnect.ui.candidate.CandidateMainActivity"
+        android:id="@+id/activity_graduate_main"
+        android:name="com.pbde.gradconnect.screens.graduate.GraduateMainActivity"
         android:label="Candidate Dashboard"
-        tools:layout="@layout/activity_candidate_main" />
+        tools:layout="@layout/activity_graduate_main" />
 
     <activity
         android:id="@+id/activity_employer_main"
-        android:name="com.pbde.gradconnect.ui.employer.EmployerMainActivity"
+        android:name="com.pbde.gradconnect.screens.employer.EmployerMainActivity"
         android:label="Employer Dashboard"
         tools:layout="@layout/activity_employer_main" />
 

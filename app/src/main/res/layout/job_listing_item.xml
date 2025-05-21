@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="16sp"
-            android:textColor="@color/primary"
+            android:textColor="#4DB6AC"
             android:textStyle="bold"
             android:text="R45,000 - R65,000/month" />
 
