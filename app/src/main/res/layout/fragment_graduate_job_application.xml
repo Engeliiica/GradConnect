@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6F9F6"
-    tools:context=".screens.graduate.jobs.CandidateJobApplicationFragment">
+    tools:context=".screens.graduate.jobs.GraduateJobApplicationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    tools:text="Software Engineer"/>
+                    tools:text="Registered Nurse"/>
 
                 <TextView
                     android:id="@+id/companyName"
@@ -50,13 +50,13 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:layout_marginTop="8dp"
-                    tools:text="The Software Company"/>
+                    tools:text="MediCare Hospital"/>
 
                 <TextView
                     android:id="@+id/location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Cape Town, South Africa"/>
+                    tools:text="Johannesburg, South Africa"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                     android:textSize="18sp"
                     android:layout_marginTop="16dp"
                     android:paddingBottom="16dp"
-                    tools:text="R480,000 - R650,000"/>
+                    tools:text="R320,000 - R450,000"/>
 
                 <Button
                     android:id="@+id/messageRecruiterButton"
@@ -109,7 +109,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cover Letter"
+                    android:text="Cover letter"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -123,7 +123,7 @@
                         android:id="@+id/coverLetterInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Write your cover letter here..."
+                        android:hint="Add cover letter to boost your chances"
                         android:minLines="6"
                         android:gravity="top"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -139,6 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Additional Information"
+                    android:visibility="gone"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -146,6 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:visibility="gone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -160,6 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:visibility="gone"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                     <com.google.android.material.textfield.TextInputEditText
