@@ -50,15 +50,13 @@ public class EmployerSingleJobViewModel extends ViewModel {
             isLoading.setValue(false);
             if (result != null) {
                 job.setValue(result);
-                // Once we have the job, check for existing application
-//                checkExistingApplication(jobId);
             } else {
                 error.setValue("Failed to load job details");
             }
         });
     }
 
-   public void deleteJob(String jobId) {
+    public void deleteJob(String jobId) {
         if (jobId == null) {
             error.setValue("Job ID is required");
             return;
@@ -67,7 +65,14 @@ public class EmployerSingleJobViewModel extends ViewModel {
         isLoading.setValue(true);
         error.setValue(null);
 
-        jobsRepository.deleteJob(jobId);
+        jobsRepository.deleteJob(jobId).addOnSuccessListener(aVoid -> {
+            isLoading.setValue(false);
+            // Navigate back to jobs list
+            // This will be handled by the fragment
+        }).addOnFailureListener(e -> {
+            isLoading.setValue(false);
+            error.setValue("Failed to delete job: " + e.getMessage());
+        });
     }
 
 //    private void checkExistingApplication(String jobId) {

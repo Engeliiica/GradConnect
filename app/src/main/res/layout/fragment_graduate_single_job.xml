@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".screens.graduate.jobs.CandidateSingleJobFragment">
+    android:background="#E6F9F6"
+    tools:context=".screens.graduate.jobs.GraduateSingleJobFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                 android:id="@+id/headerCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
                 android:layout_marginBottom="16dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -135,7 +137,7 @@
                             android:id="@+id/tvSalary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="?attr/colorPrimary"
+                            android:textColor="#4DB6AC"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             tools:text="R500,000/year"/>
@@ -144,6 +146,7 @@
                             android:id="@+id/btnApply"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:backgroundTint="#4DB6AC"
                             android:layout_marginTop="8dp"
                             android:text="Apply Now"/>
 
@@ -168,6 +171,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
@@ -199,7 +203,9 @@
                 <!-- Requirements Section -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_height="wrap_content"
+
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
@@ -234,6 +240,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
@@ -268,11 +275,13 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_marginBottom="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="#FFFFFF"
                         android:orientation="vertical"
                         android:padding="16dp">
 

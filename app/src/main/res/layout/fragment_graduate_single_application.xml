@@ -212,6 +212,7 @@
                         android:id="@+id/tvPortfolioLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:text="Portfolio"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -222,12 +223,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#D3D3D3"
+                        android:visibility="gone"
                         android:layout_marginVertical="8dp"/>
 
                     <TextView
                         android:id="@+id/tvPortfolioLink"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:autoLink="web"
                         android:textColor="@color/secondary_variant"
                         tools:text="se" />
@@ -236,6 +239,7 @@
                         android:id="@+id/tvLinkedinLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:text="LinkedIn"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -246,6 +250,7 @@
                         android:id="@+id/linkedinDivider"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:visibility="gone"
                         android:background="#D3D3D3"
                         android:layout_marginVertical="8dp" />
 
@@ -300,6 +305,7 @@
                             android:textColor="#FFFFFF"
                             android:backgroundTint="#4DB6AC"
                             app:cornerRadius="12dp"/>
+
 
                         <Button
                             android:id="@+id/btnDelete"

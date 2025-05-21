@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6F9F6"
-    tools:context=".screens.graduate.chats.CandidateChatActivity">
+    tools:context=".screens.graduate.chats.GraduateChatActivity">
 
     <!-- Optional emoji background -->
     <TextView

@@ -28,6 +28,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:layout_marginBottom="16dp">
 
             <LinearLayout
@@ -98,6 +99,7 @@
         <!-- Application Form Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
+            android:backgroundTint="#FFFFFF"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -116,6 +118,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
                     android:layout_marginTop="8dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -128,12 +131,6 @@
                         android:gravity="top"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?android:attr/listDivider"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -181,15 +178,15 @@
                     android:layout_marginTop="16dp">
 
                     <!-- The edit button will be added programmatically -->
-                    
+
                     <Button
                         android:id="@+id/cancelButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#4DB6AC"
+                        android:layout_marginEnd="8dp"
                         android:text="Cancel"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_marginEnd="8dp"/>
+                        android:textColor="#4DB6AC" />
 
                     <Button
                         android:id="@+id/submitButton"

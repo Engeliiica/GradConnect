@@ -11,6 +11,9 @@ import com.pbde.gradconnect.data.models.Job;
 import com.pbde.gradconnect.data.models.JobFilters;
 import com.pbde.gradconnect.data.models.enums.JobType;
 import com.pbde.gradconnect.data.models.enums.WorkMode;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -156,10 +159,10 @@ public class JobsRepository {
         return jobLiveData;
     }
 
-    public void deleteJob(String jobId) {
-        db.collection(JOBS_COLLECTION)
-            .document(jobId)
-            .delete();
+    public Task<Void> deleteJob(String jobId) {
+        return db.collection(JOBS_COLLECTION)
+                .document(jobId)
+                .delete(); // Now you're returning the Task to the caller
     }
 
     public LiveData<List<Job>> getCandidateFilteredJobs(JobFilters filters) {
