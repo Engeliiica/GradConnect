@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.TextView;
 import com.pbde.gradconnect.R;
 
 
@@ -14,6 +15,7 @@ public class EmployerApplicationsFragment extends Fragment {
     private EmployerApplicationsViewModel viewModel;
     private JobApplicationAdapter adapter;
     private RecyclerView recyclerView;
+    private TextView tvNoApplications;
     private String employerId;
 
     public EmployerApplicationsFragment() {
@@ -32,6 +34,7 @@ public class EmployerApplicationsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_employer_applications, container, false);
         
         recyclerView = view.findViewById(R.id.rvEmployerApplications);
+        tvNoApplications = view.findViewById(R.id.tvNoApplications);
         adapter = new JobApplicationAdapter(this);
         recyclerView.setAdapter(adapter);
 
@@ -46,6 +49,14 @@ public class EmployerApplicationsFragment extends Fragment {
         // Load applications and observe changes
         viewModel.getApplications().observe(getViewLifecycleOwner(), applications -> {
             adapter.setApplications(applications);
+            // Show/hide no applications message
+            if (applications == null || applications.isEmpty()) {
+                tvNoApplications.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
+            } else {
+                tvNoApplications.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+            }
         });
 
         viewModel.getApplicationsJobs().observe(getViewLifecycleOwner(), applicationsJobs -> {

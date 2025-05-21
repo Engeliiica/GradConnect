@@ -15,14 +15,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvEmployerApplications"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="Job applications"
-            android:accessibilityLiveRegion="polite"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/job_application_item" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEmployerApplications"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Job applications"
+                android:accessibilityLiveRegion="polite"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/job_application_item" />
+
+            <TextView
+                android:id="@+id/tvNoApplications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="No applications yet"
+                android:textSize="18sp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </FrameLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
