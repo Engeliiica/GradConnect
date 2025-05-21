@@ -128,11 +128,19 @@ public class EmployerCreateEditJobFragment extends Fragment {
             List<String> responsibilities = parseLines(responsibilitiesInput.getText().toString());
             List<String> benefits = parseLines(benefitsInput.getText().toString());
 
+            // Show loading state
+            saveButton.setEnabled(false);
+            saveButton.setText("Saving...");
+
             viewModel.createJob(title, location, type, level, workMode, description, requirements,
                 responsibilities, benefits, salary).observe(getViewLifecycleOwner(),
                     job -> {
                     if (job != null) {
                         requireActivity().onBackPressed();
+                    } else {
+                        // Reset button state on error
+                        saveButton.setEnabled(true);
+                        saveButton.setText(viewModel.isEditMode() ? "Update" : "Create");
                     }
                 });
         });

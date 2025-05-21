@@ -72,24 +72,42 @@ public class EmployerCreateEditJobViewModel extends ViewModel {
                                    String workMode, String description, List<String> requirements,
                                    List<String> responsibilities, List<String> benefits,
                                    String salary) {
-        if (employerData == null) {
-            errorMessage.setValue("Employer information not set");
-            return null;
+        MutableLiveData<Job> result = new MutableLiveData<>();
+        
+        if (employerData.getValue() == null) {
+            errorMessage.setValue("Employer information not loaded. Please try again.");
+            result.setValue(null);
+            return result;
         }
 
         if (title.trim().isEmpty()) {
             errorMessage.setValue("Title is required");
-            return new MutableLiveData<>(null);
+            result.setValue(null);
+            return result;
         }
 
         if (location.trim().isEmpty()) {
             errorMessage.setValue("Location is required");
-            return new MutableLiveData<>(null);
+            result.setValue(null);
+            return result;
         }
 
         if (description.trim().isEmpty()) {
             errorMessage.setValue("Description is required");
-            return new MutableLiveData<>(null);
+            result.setValue(null);
+            return result;
+        }
+
+        if (type.trim().isEmpty()) {
+            errorMessage.setValue("Employment type is required");
+            result.setValue(null);
+            return result;
+        }
+
+        if (workMode.trim().isEmpty()) {
+            errorMessage.setValue("Work mode is required");
+            result.setValue(null);
+            return result;
         }
 
         Job job;
@@ -131,13 +149,20 @@ public class EmployerCreateEditJobViewModel extends ViewModel {
 
         if (!job.isValid()) {
             errorMessage.setValue("Please fill in all required fields");
-            return null;
+            result.setValue(null);
+            return result;
         }
         
         if (isEditMode) {
             return jobsRepository.updateJob(job.getId(), jobToMap(job));
         } else {
-            return jobsRepository.createJob(job);
+            LiveData<Job> createdJob = jobsRepository.createJob(job);
+            createdJob.observeForever(newJob -> {
+                if (newJob == null) {
+                    errorMessage.setValue("Failed to create job. Please try again.");
+                }
+            });
+            return createdJob;
         }
     }
 
